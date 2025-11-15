@@ -56,6 +56,7 @@ src/main/java
 
 ## 4. Configuração do Banco de Dados
 No **application.properties**:
+
 ```properties
 spring.datasource.url=jdbc:h2:mem:careerbooster
 spring.datasource.driverClassName=org.h2.Driver
@@ -81,7 +82,7 @@ cd Aplicativo
 
 mvn spring-boot:run
 
-    A API estará disponível em:
+A API estará disponível em:
 
 http://localhost:8080
 
@@ -197,7 +198,7 @@ http://localhost:8080/swagger-ui.html
 
 10. Testes Rápidos
 
-    Usar Postman, Insomnia ou curl.
+    Usar Postman, Insomnia ou curl
 
     Exemplo com curl:
 
