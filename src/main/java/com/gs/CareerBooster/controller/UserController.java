@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.Operation;
 
 import java.net.URI;
 import java.util.List;
@@ -23,6 +24,7 @@ public class UserController {
 
     // ➤ Criar usuário
     @PostMapping
+    @Operation(summary = "Cria um novo usuário")
     public ResponseEntity<UserResponseDto> createUser(@Valid @RequestBody CreateUserDto dto) {
         UserResponseDto response = userService.createUser(dto);
 
@@ -34,12 +36,14 @@ public class UserController {
 
     // ➤ Buscar por ID
     @GetMapping("/{id}")
+    @Operation(summary = "Busca um usuário pelo ID")
     public ResponseEntity<UserResponseDto> getUserById(@PathVariable Integer id) {
         UserResponseDto response = userService.getUserById(id);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping
+    @Operation(summary = "Lista todos os usuários")
     public ResponseEntity<List<UserResponseDto>> getAllUsers() {
         List<UserResponseDto> response = userService.getAllUsers();
         return ResponseEntity.ok(response);
@@ -47,6 +51,7 @@ public class UserController {
 
     // ➤ Atualizar usuário
     @PutMapping("/{id}")
+    @Operation(summary = "Atualiza os dados de um usuário")
     public ResponseEntity<UserResponseDto> updateUser(
             @PathVariable Integer id,
             @Valid @RequestBody UpdateUserDto dto
@@ -56,6 +61,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Remove um usuário pelo ID")
     public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build(); // 204 No Content
