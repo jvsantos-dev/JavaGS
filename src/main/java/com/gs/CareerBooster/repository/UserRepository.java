@@ -6,10 +6,7 @@
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Repository;
 
-        import java.sql.Connection;
-        import java.sql.PreparedStatement;
-        import java.sql.ResultSet;
-        import java.sql.SQLException;
+        import java.sql.*;
         import java.util.ArrayList;
         import java.util.List;
 
@@ -23,7 +20,7 @@
                 String sql = "INSERT INTO users (password, name, email, username, area_interest) VALUES (?, ?, ?, ?, ?)";
 
                 try (Connection conn = dataBaseConnection.getConnection();
-                     PreparedStatement stmt = conn.prepareStatement(sql)) {
+                     PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
                     stmt.setString(1, user.getPassword());
                     stmt.setString(2, user.getName());
@@ -32,6 +29,12 @@
                     stmt.setString(5, user.getArea_interest());
 
                     stmt.executeUpdate();
+
+                    ResultSet rs = stmt.getGeneratedKeys();
+                    if (rs.next()) {
+                        user.setId(rs.getInt(1)); // ID gerado
+                    }
+
                     System.out.println("Usuário salvo com sucesso");
 
                 } catch (SQLException e) {

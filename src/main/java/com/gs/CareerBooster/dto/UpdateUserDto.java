@@ -2,11 +2,12 @@ package com.gs.CareerBooster.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class CreateUserDto {
+public class UpdateUserDto {
 
     @NotBlank(message = "Nome é obrigatório")
     private String name;
@@ -18,9 +19,6 @@ public class CreateUserDto {
     @NotBlank(message = "Username é obrigatório")
     @Size(min = 3, message = "Username deve ter no mínimo 3 caracteres")
     private String username;
-
-    @NotBlank(message = "Senha é obrigatória")
-    private String password;
 
     @NotBlank(message = "Área de interesse é obrigatória")
     private String area_interest;
