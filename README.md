@@ -56,6 +56,7 @@ src/main/java
 
 ## 4. Configuração do Banco de Dados
 No **application.properties**:
+
 ```properties
 spring.datasource.url=jdbc:h2:mem:careerbooster
 spring.datasource.driverClassName=org.h2.Driver
@@ -70,7 +71,7 @@ spring.h2.console.enabled=true
 
     H2 Console disponível em /h2-console
 
-## 5. Como Executar
+5. Como Executar
 
     Clonar o repositório:
 
@@ -81,11 +82,11 @@ cd Aplicativo
 
 mvn spring-boot:run
 
-    A API estará disponível em:
+A API estará disponível em:
 
 http://localhost:8080
 
-## 6. Endpoints da API
+6. Endpoints da API
 Criar Usuário
 
 POST /users
@@ -169,7 +170,7 @@ Deletar Usuário
 DELETE /users/{id}
 
 Response (204 No Content)
-## 7. Validação e Tratamento de Erros
+7. Validação e Tratamento de Erros
 
     Bean Validation para campos obrigatórios e formato de e-mail.
 
@@ -181,13 +182,13 @@ Response (204 No Content)
 
     Centralizado via @RestControllerAdvice (opcional, recomendado para respostas padronizadas)
 
-## 8. Segurança
+8. Segurança
 
     Senhas devem ser criptografadas (recomendado BCrypt no Service)
 
     Endpoints podem ser protegidos via Spring Security (opcional, mas recomendado)
 
-## 9. Documentação da API
+9. Documentação da API
 
     Recomendado adicionar Swagger / OpenAPI com springdoc-openapi
 
@@ -195,9 +196,9 @@ Response (204 No Content)
 
 http://localhost:8080/swagger-ui.html
 
-## 10. Testes Rápidos
+10. Testes Rápidos
 
-    Usar Postman, Insomnia ou curl.
+    Usar Postman, Insomnia ou curl
 
     Exemplo com curl:
 
@@ -205,7 +206,7 @@ curl -X POST http://localhost:8080/users \
 -H "Content-Type: application/json" \
 -d '{"name":"João Victor","email":"teste@gmail.com","username":"joaovictor","password":"123456","area_interest":"Desenvolvimento"}'
 
-## 11. Observações
+11. Observações
 
     O projeto utiliza DTOs para garantir segurança e não expor campos sensíveis (ex.: senha).
 
