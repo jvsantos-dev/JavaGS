@@ -1,4 +1,4 @@
-# CareerBooster API – Plataforma de Upskilling / Reskilling
+﻿# CareerBooster API – Plataforma de Upskilling / Reskilling
 
 ## 1. Descrição do Projeto
 O **CareerBooster** é uma **API RESTful** desenvolvida em **Java 17** com **Spring Boot**, voltada para a requalificação (reskilling) e o aperfeiçoamento (upskilling) de profissionais para o futuro do trabalho (2030+).

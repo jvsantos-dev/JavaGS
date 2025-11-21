@@ -26,7 +26,7 @@
                     stmt.setString(2, user.getName());
                     stmt.setString(3, user.getEmail());
                     stmt.setString(4, user.getUsername());
-                    stmt.setString(5, user.getArea_interest());
+                    stmt.setString(5, user.getAreaInterest());
 
                     stmt.executeUpdate();
 
@@ -57,7 +57,7 @@
                         u.setName(rs.getString("name"));
                         u.setEmail(rs.getString("email"));
                         u.setUsername(rs.getString("username"));
-                        u.setArea_interest(rs.getString("area_interest"));
+                        u.setAreaInterest(rs.getString("area_interest"));
 
                         users.add(u);
                     }
@@ -79,7 +79,7 @@
                     stmt.setString(2, user.getName());
                     stmt.setString(3, user.getEmail());
                     stmt.setString(4, user.getUsername());
-                    stmt.setString(5, user.getArea_interest());
+                    stmt.setString(5, user.getAreaInterest());
                     stmt.setInt(6, user.getId());
 
                     int rowsUpdate = stmt.executeUpdate();
@@ -112,24 +112,26 @@
             public UserModel findById(Integer id) {
                 String sql = "SELECT * FROM users WHERE id = ?";
 
-                try(Connection conn = dataBaseConnection.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql)){
+                try (Connection conn = dataBaseConnection.getConnection();
+                     PreparedStatement stmt = conn.prepareStatement(sql)) {
+
                     stmt.setInt(1, id);
-                    ResultSet rs = stmt.executeQuery();
 
-                    if(rs.next()) {
-                        UserModel u = new UserModel();
-
-                        u.setId(rs.getInt("id"));
-                        u.setPassword(rs.getString("password"));
-                        u.setName(rs.getString("name"));
-                        u.setEmail(rs.getString("email"));
-                        u.setUsername(rs.getString("username"));
-                        u.setArea_interest(rs.getString("area_interest"));
-                        return u;
+                    try (ResultSet rs = stmt.executeQuery()) {
+                        if (rs.next()) {
+                            UserModel u = new UserModel();
+                            u.setId(rs.getInt("id"));
+                            u.setPassword(rs.getString("password"));
+                            u.setName(rs.getString("name"));
+                            u.setEmail(rs.getString("email"));
+                            u.setUsername(rs.getString("username"));
+                            u.setAreaInterest(rs.getString("area_interest"));
+                            return u;
+                        }
                     }
 
                     return null;
+
                 } catch (SQLException e) {
                     throw new RuntimeException("Erro ao buscar usuário: " + e.getMessage(), e);
                 }
