@@ -37,7 +37,7 @@ public class UserService {
         user.setEmail(dto.getEmail());
         user.setUsername(dto.getUsername());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
-        user.setArea_interest(dto.getAreaInterest());
+        user.setAreaInterest(dto.getAreaInterest());
 
         userRepository.save(user);
 
@@ -77,7 +77,7 @@ public class UserService {
         existing.setName(dto.getName());
         existing.setEmail(dto.getEmail());
         existing.setUsername(dto.getUsername());
-        existing.setArea_interest(dto.getAreaInterest());
+        existing.setAreaInterest(dto.getAreaInterest());
 
         boolean updated = userRepository.update(existing);
 
@@ -94,7 +94,7 @@ public class UserService {
         dto.setName(user.getName());
         dto.setEmail(user.getEmail());
         dto.setUsername(user.getUsername());
-        dto.setArea_interest(user.getArea_interest());
+        dto.setArea_interest(user.getAreaInterest());
         return dto;
     }
 
